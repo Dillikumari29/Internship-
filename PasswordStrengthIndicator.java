@@ -17,18 +17,17 @@ public class PasswordStrengthIndicator extends JFrame {
 
         passwordField = new JTextField();
         passwordField.getDocument().addDocumentListener(new DocumentListener() {
-            @Override
-            public void insertUpdate(DocumentEvent e) {
+        @Override
+        public void insertUpdate(DocumentEvent e) {
                 updateStrengthIndicator();
-            }
-                        @Override
-            public void removeUpdate(DocumentEvent e) {
+        }
+        @Override
+        public void removeUpdate(DocumentEvent e) {
                 updateStrengthIndicator();
-            }
-
-            @Override
-            public void changedUpdate(DocumentEvent e) {
-            }
+        }
+        @Override
+        public void changedUpdate(DocumentEvent e) {
+        }
         });
 
         JPanel passwordPanel = new JPanel();
@@ -41,15 +40,14 @@ public class PasswordStrengthIndicator extends JFrame {
 
         JButton checkButton = new JButton("Check Strength");
         checkButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        @Override
+        public void actionPerformed(ActionEvent e) {
                 updateStrengthIndicator();
-            }
+        }
         });
         add(checkButton, BorderLayout.SOUTH);
         setVisible(true);
     }
-
     private void updateStrengthIndicator() {
         String password = passwordField.getText();
         int strength = calculatePasswordStrength(password);
@@ -65,7 +63,6 @@ public class PasswordStrengthIndicator extends JFrame {
             strengthLabel.setText("Password is : High");
         }
     }
-
     private int calculatePasswordStrength(String password) {
         if (password.length() < 8) {
             return 1;
@@ -85,7 +82,6 @@ public class PasswordStrengthIndicator extends JFrame {
         }
         return strength;
     }
-
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> new PasswordStrengthIndicator());
     }
